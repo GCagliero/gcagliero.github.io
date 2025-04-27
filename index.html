@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gonzalo Matías Cagliero - Ingeniero Electrónico</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --accent: #e74c3c;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            opacity: 0.8;
+            z-index: 0;
+        }
+        
+        header .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        header p {
+            margin: 0.5rem 0 0;
+            font-size: 1.2rem;
+            color: var(--light);
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--secondary);
+            margin-bottom: 1rem;
+            animation: zoomIn 1s ease-out, float 6s ease-in-out infinite;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        section {
+            padding: 2rem 0;
+            border-bottom: 1px solid #eee;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        section:last-child {
+            border-bottom: none;
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 0.4s ease-out;
+        }
+        
+        section.visible h2::after {
+            transform: scaleX(1);
+        }
+        
+        .experience-item, .education-item, .academic-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .experience-item:hover, .education-item:hover, .academic-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .job-title, .degree, .academic-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+        
+        .company, .institution, .academic-institution {
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        .date {
+            color: #777;
+            font-style: italic;
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .skill-category {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .skill-category h3 {
+            color: var(--primary);
+            margin-top: 0;
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .contact-item {
+            flex: 1;
+            min-width: 200px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-item i {
+            margin-right: 0.5rem;
+            color: var(--secondary);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-item:hover i {
+            transform: scale(1.2);
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        footer p {
+            margin: 0;
+            animation: pulse 2s infinite;
+        }
+        #about{
+            text-align: justify;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--secondary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 100;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .floating-btn.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .floating-btn:hover {
+            background: var(--primary);
+            transform: translateY(-3px) scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .skills-container, .contact-info {
+                flex-direction: column;
+            }
+            
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <a href="#contact" class="floating-btn" id="contact-btn">
+        <i class="fas fa-paper-plane"></i>
+    </a>
+
+    <header>
+        <div class="container">
+            <!-- Reemplaza con tu imagen de perfil -->
+            <img src="profile.jpg" alt="Gonzalo Matías Cagliero" class="profile-img">
+            <h1>Gonzalo Matías Cagliero</h1>
+            <p>Ingeniero Electrónico | Diseñador de Hardware</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2>Sobre Mí</h2>
+            <p>Soy una persona feliz, con un excelente carácter. A lo largo de estos años he aprendido a valorar cada una de las oportunidades que me da la vida, esforzándome al máximo para poder crecer personal y profesionalmente. Me gusta aprender cosas nuevas, conocer nuevas personas y trabajar en equipo. Considero que los buenos modales, la veracidad y la puntualidad son valores fundamentales.</p>
+            <p>En mis tiempos libres me gusta leer, tocar la guitarra y jugar al ajedrez. Me gustan los nuevos desafíos y pienso que con esfuerzo y constancia cualquier dificultad se puede superar.</p>
+        </section>
+
+        <section id="experience">
+            <h2>Experiencia Profesional</h2>
+            
+            <div class="experience-item">
+                <div class="job-title">Diseñador de Hardware</div>
+                <div class="company">Seleo SRL (Italia)</div>
+                <div class="date">2023 - 2024</div>
+                <p>Seleo Srl es una empresa italiana dedicada al diseño y producción de instrumentos para el diagnóstico clínico y veterinario.</p>
+                <ul>
+                    <li>Diseño electrónico</li>
+                    <li>Diseño mecánico</li>
+                    <li>Programación de firmware</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <div class="job-title">Ingeniero electrónico</div>
+                <div class="company">Electrónica Paltuc</div>
+                <div class="date">2016 - 2023</div>
+                <p>Empresa dedicada al mantenimiento y servicio técnico electrónico, reparaciones, asesoramiento y desarrollo de interfaces electrónicas en general.</p>
+                <ul>
+                    <li>Trato con el cliente y proveedores</li>
+                    <li>Mantenimiento, desarrollo y reparaciones</li>
+                    <li>Asesoramiento</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <div class="job-title">Ingeniero electrónico</div>
+                <div class="company">Kylix Tecnologia</div>
+                <div class="date">2018 - 2023</div>
+                <p>Empresa tecnológica que desarrolla instrumentos electrónicos para el sector ganadero.</p>
+                <ul>
+                    <li>Diseño del circuito electrónico</li>
+                    <li>Diseño de PCB</li>
+                    <li>Diseño mecánico</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <div class="job-title">Ingeniero electrónico</div>
+                <div class="company">Simca S.A.</div>
+                <div class="date">2017</div>
+                <p>Empresa dedicada al desarrollo de prototipos electrónicos.</p>
+                <ul>
+                    <li>Documentación de firmware</li>
+                    <li>Compra de insumos</li>
+                    <li>Test y calibración de prototipos</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <div class="job-title">Operador de instrumentos de medición</div>
+                <div class="company">Elecor</div>
+                <div class="date">2014 - 2016</div>
+                <p>Empresa representante oficial de Fluke en Tucumán, dedicada a la venta de equipos, servicios de certificaciones, reparaciones y calibración de equipos.</p>
+                <ul>
+                    <li>Medición de parámetros eléctricos</li>
+                    <li>Medición de puesta a tierra</li>
+                    <li>Termografía</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Educación</h2>
+            
+            <div class="education-item">
+                <div class="degree">Ingeniería Electrónica</div>
+                <div class="institution">Universidad Tecnológica Nacional</div>
+                <div class="date">2012 - 2017</div>
+            </div>
+            
+        </section>
+
+        <section id="academic">
+            <h2>Ámbito Académico</h2>
+            
+            <div class="academic-item">
+                <div class="academic-title">Beca de servicio</div>
+                <div class="academic-institution">Universidad Tecnológica Nacional</div>
+                <p>Laboratorio de comunicación y control</p>
+                <div class="date">2013 - 2014</div>
+            </div>
+            <div class="education-item">
+                <div class="degree">Beca Binid - Investigación</div>
+                <div class="institution">Universidad Tecnológica Nacional</div>
+                <p>Experiencia en investigación y desarrollo dentro del ámbito universitario.</p>
+                <div class="date">2020 - 2021</div>
+            </div>
+            
+            <div class="academic-item">
+                <div class="academic-title">Título de Ingeniero Electrónico</div>
+                <div class="academic-institution">Universidad Tecnológica Nacional</div>
+                <div class="date">2017</div>
+                <p>Título profesional obtenido tras completar los estudios de ingeniería electrónica.</p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Aptitudes y Conocimientos</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programación</h3>
+                    <ul>
+                        <li>C</li>
+                        <li>HTML, CSS, JavaScript</li>
+                        <li>SQL</li>
+                        <li>Programación de firmware</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Diseño Electrónico</h3>
+                    <ul>
+                        <li>Diseño de circuitos electrónicos</li>
+                        <li>Diseño de PCB (Altium, KiCad, EasyEda)</li>
+                        <li>Electrónica de potencia</li>
+                        <li>Fuentes conmutadas</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Diseño Mecánico</h3>
+                    <ul>
+                        <li>CAD (SolidWorks, FreeCad, AutoCAD)</li>
+                        <li>CAM</li>
+                        <li>FlatCam</li>
+                        <li>GcodeSender</li>
+                        <li>Repetier</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Pruebas y Calibración</h3>
+                    <ul>
+                        <li>Prueba y calibración de equipos</li>
+                        <li>Medición de parámetros eléctricos</li>
+                        <li>Termografía</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="languages">
+            <h2>Idiomas</h2>
+            <ul>
+                <li>Español - Nativo</li>
+                <li>Inglés - Competente</li>
+                <li>Italiano - Competente</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Contacto</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>San Lorenzo 1060, 11°A, San Miguel de Tucumán</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+54 9 3816279735</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>caglierogonzalo@hotmail.com</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Gonzalo Matías Cagliero. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animación de aparición de secciones al hacer scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            const contactBtn = document.getElementById('contact-btn');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Mostrar/ocultar botón flotante
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    contactBtn.classList.add('visible');
+                } else {
+                    contactBtn.classList.remove('visible');
+                }
+            });
+            
+            // Smooth scrolling para todos los enlaces
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
