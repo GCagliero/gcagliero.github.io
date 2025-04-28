@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gonzalo Matías Cagliero - Ingeniero Electrónico</title>
+    <title>Gonzalo Matías Cagliero - Electronic Engineer</title>
     <style>
         :root {
             --primary: #2c3e50;
@@ -77,6 +77,42 @@
             margin-bottom: 1rem;
             animation: zoomIn 1s ease-out, float 6s ease-in-out infinite;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 2;
+        }
+        
+        .language-btn {
+            width: 30px;
+            height: 20px;
+            border: none;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: transform 0.3s ease;
+        }
+        
+        .language-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        #es-btn {
+            background-image: url('https://flagcdn.com/w20/es.png');
+        }
+        
+        #en-btn {
+            background-image: url('https://flagcdn.com/w20/gb.png');
+        }
+        
+        #it-btn {
+            background-image: url('https://flagcdn.com/w20/it.png');
         }
         
         @keyframes float {
@@ -332,198 +368,207 @@
                 width: 120px;
                 height: 120px;
             }
+            
+            .language-switcher {
+                top: 10px;
+                right: 10px;
+            }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <div class="language-switcher">
+        <button id="es-btn" class="language-btn" title="Español"></button>
+        <button id="en-btn" class="language-btn" title="English"></button>
+        <button id="it-btn" class="language-btn" title="Italiano"></button>
+    </div>
+
     <a href="#contact" class="floating-btn" id="contact-btn">
         <i class="fas fa-paper-plane"></i>
     </a>
 
     <header>
         <div class="container">
-            <!-- Reemplaza con tu imagen de perfil -->
             <img src="profile.jpg" alt="Gonzalo Matías Cagliero" class="profile-img">
-            <h1>Gonzalo Matías Cagliero</h1>
-            <p>Ingeniero Electrónico | Diseñador de Hardware</p>
+            <h1 id="title">Gonzalo Matías Cagliero</h1>
+            <p id="subtitle">Ingeniero Electrónico | Diseñador de Hardware</p>
         </div>
     </header>
 
     <div class="container">
         <section id="about">
-            <h2>Sobre Mí</h2>
-            <p>Soy una persona feliz, con un excelente carácter. A lo largo de estos años he aprendido a valorar cada una de las oportunidades que me da la vida, esforzándome al máximo para poder crecer personal y profesionalmente. Me gusta aprender cosas nuevas, conocer nuevas personas y trabajar en equipo. Considero que los buenos modales, la veracidad y la puntualidad son valores fundamentales.</p>
-            <p>En mis tiempos libres me gusta leer, tocar la guitarra y jugar al ajedrez. Me gustan los nuevos desafíos y pienso que con esfuerzo y constancia cualquier dificultad se puede superar.</p>
+            <h2 id="aboutTitle">Sobre Mí</h2>
+            <p id="aboutText1">Soy una persona feliz, con un excelente carácter. A lo largo de estos años he aprendido a valorar cada una de las oportunidades que me da la vida, esforzándome al máximo para poder crecer personal y profesionalmente. Me gusta aprender cosas nuevas, conocer nuevas personas y trabajar en equipo. Considero que los buenos modales, la veracidad y la puntualidad son valores fundamentales.</p>
+            <p id="aboutText2">En mis tiempos libres me gusta leer, tocar la guitarra y jugar al ajedrez. Me gustan los nuevos desafíos y pienso que con esfuerzo y constancia cualquier dificultad se puede superar.</p>
         </section>
 
         <section id="experience">
-            <h2>Experiencia Profesional</h2>
+            <h2 id="experienceTitle">Experiencia Profesional</h2>
             
             <div class="experience-item">
-                <div class="job-title">Diseñador de Hardware</div>
+                <div class="job-title" id="job1Title">Diseñador de Hardware</div>
                 <div class="company">Seleo SRL (Italia)</div>
                 <div class="date">2023 - 2024</div>
-                <p>Seleo Srl es una empresa italiana dedicada al diseño y producción de instrumentos para el diagnóstico clínico y veterinario.</p>
+                <p id="job1Desc">Seleo Srl es una empresa italiana dedicada al diseño y producción de instrumentos para el diagnóstico clínico y veterinario.</p>
                 <ul>
-                    <li>Diseño electrónico</li>
-                    <li>Diseño mecánico</li>
-                    <li>Programación de firmware</li>
+                    <li id="job1Task1">Diseño electrónico</li>
+                    <li id="job1Task2">Diseño mecánico</li>
+                    <li id="job1Task3">Programación de firmware</li>
                 </ul>
             </div>
             
             <div class="experience-item">
-                <div class="job-title">Ingeniero electrónico</div>
+                <div class="job-title" id="job2Title">Ingeniero electrónico</div>
                 <div class="company">Electrónica Paltuc</div>
                 <div class="date">2016 - 2023</div>
-                <p>Empresa dedicada al mantenimiento y servicio técnico electrónico, reparaciones, asesoramiento y desarrollo de interfaces electrónicas en general.</p>
+                <p id="job2Desc">Empresa dedicada al mantenimiento y servicio técnico electrónico, reparaciones, asesoramiento y desarrollo de interfaces electrónicas en general.</p>
                 <ul>
-                    <li>Trato con el cliente y proveedores</li>
-                    <li>Mantenimiento, desarrollo y reparaciones</li>
-                    <li>Asesoramiento</li>
+                    <li id="job2Task1">Trato con el cliente y proveedores</li>
+                    <li id="job2Task2">Mantenimiento, desarrollo y reparaciones</li>
+                    <li id="job2Task3">Asesoramiento</li>
                 </ul>
             </div>
             
             <div class="experience-item">
-                <div class="job-title">Ingeniero electrónico</div>
+                <div class="job-title" id="job3Title">Ingeniero electrónico</div>
                 <div class="company">Kylix Tecnologia</div>
                 <div class="date">2018 - 2023</div>
-                <p>Empresa tecnológica que desarrolla instrumentos electrónicos para el sector ganadero.</p>
+                <p id="job3Desc">Empresa tecnológica que desarrolla instrumentos electrónicos para el sector ganadero.</p>
                 <ul>
-                    <li>Diseño del circuito electrónico</li>
-                    <li>Diseño de PCB</li>
-                    <li>Diseño mecánico</li>
+                    <li id="job3Task1">Diseño del circuito electrónico</li>
+                    <li id="job3Task2">Diseño de PCB</li>
+                    <li id="job3Task3">Diseño mecánico</li>
                 </ul>
             </div>
             
             <div class="experience-item">
-                <div class="job-title">Ingeniero electrónico</div>
+                <div class="job-title" id="job4Title">Ingeniero electrónico</div>
                 <div class="company">Simca S.A.</div>
                 <div class="date">2017</div>
-                <p>Empresa dedicada al desarrollo de prototipos electrónicos.</p>
+                <p id="job4Desc">Empresa dedicada al desarrollo de prototipos electrónicos.</p>
                 <ul>
-                    <li>Documentación de firmware</li>
-                    <li>Compra de insumos</li>
-                    <li>Test y calibración de prototipos</li>
+                    <li id="job4Task1">Documentación de firmware</li>
+                    <li id="job4Task2">Compra de insumos</li>
+                    <li id="job4Task3">Test y calibración de prototipos</li>
                 </ul>
             </div>
             
             <div class="experience-item">
-                <div class="job-title">Operador de instrumentos de medición</div>
+                <div class="job-title" id="job5Title">Operador de instrumentos de medición</div>
                 <div class="company">Elecor</div>
                 <div class="date">2014 - 2016</div>
-                <p>Empresa representante oficial de Fluke en Tucumán, dedicada a la venta de equipos, servicios de certificaciones, reparaciones y calibración de equipos.</p>
+                <p id="job5Desc">Empresa representante oficial de Fluke en Tucumán, dedicada a la venta de equipos, servicios de certificaciones, reparaciones y calibración de equipos.</p>
                 <ul>
-                    <li>Medición de parámetros eléctricos</li>
-                    <li>Medición de puesta a tierra</li>
-                    <li>Termografía</li>
+                    <li id="job5Task1">Medición de parámetros eléctricos</li>
+                    <li id="job5Task2">Medición de puesta a tierra</li>
+                    <li id="job5Task3">Termografía</li>
                 </ul>
             </div>
         </section>
 
         <section id="education">
-            <h2>Educación</h2>
+            <h2 id="educationTitle">Educación</h2>
             
             <div class="education-item">
-                <div class="degree">Ingeniería Electrónica</div>
+                <div class="degree" id="degree1Title">Ingeniería Electrónica</div>
                 <div class="institution">Universidad Tecnológica Nacional</div>
                 <div class="date">2012 - 2017</div>
             </div>
-            
         </section>
 
         <section id="academic">
-            <h2>Ámbito Académico</h2>
+            <h2 id="academicTitle">Ámbito Académico</h2>
             
             <div class="academic-item">
-                <div class="academic-title">Beca de servicio</div>
+                <div class="academic-title" id="academic1Title">Beca de servicio</div>
                 <div class="academic-institution">Universidad Tecnológica Nacional</div>
-                <p>Laboratorio de comunicación y control</p>
+                <p id="academic1Desc">Laboratorio de comunicación y control. (Estudiante)</p>
                 <div class="date">2013 - 2014</div>
             </div>
             <div class="education-item">
-                <div class="degree">Beca Binid - Investigación</div>
+                <div class="degree" id="academic2Title">Beca Binid - Investigación</div>
                 <div class="institution">Universidad Tecnológica Nacional</div>
-                <p>Experiencia en investigación y desarrollo dentro del ámbito universitario.</p>
+                <p id="academic2Desc">Experiencia en investigación y desarrollo dentro del ámbito universitario. (Graduado)</p>
                 <div class="date">2020 - 2021</div>
             </div>
             
             <div class="academic-item">
-                <div class="academic-title">Título de Ingeniero Electrónico</div>
+                <div class="academic-title" id="academic3Title">Título de Ingeniero Electrónico</div>
                 <div class="academic-institution">Universidad Tecnológica Nacional</div>
                 <div class="date">2017</div>
-                <p>Título profesional obtenido tras completar los estudios de ingeniería electrónica.</p>
+                <p id="academic3Desc">Título profesional obtenido tras completar los estudios de ingeniería electrónica.</p>
             </div>
         </section>
 
         <section id="skills">
-            <h2>Aptitudes y Conocimientos</h2>
+            <h2 id="skillsTitle">Aptitudes y Conocimientos</h2>
             <div class="skills-container">
                 <div class="skill-category">
-                    <h3>Programación</h3>
+                    <h3 id="skills1Title">Programación</h3>
                     <ul>
-                        <li>C</li>
-                        <li>HTML, CSS, JavaScript</li>
-                        <li>SQL</li>
-                        <li>Programación de firmware</li>
+                        <li id="skills1Item1">C</li>
+                        <li id="skills1Item2">HTML, CSS, JavaScript</li>
+                        <li id="skills1Item3">SQL</li>
+                        <li id="skills1Item4">Programación de firmware</li>
                     </ul>
                 </div>
                 
                 <div class="skill-category">
-                    <h3>Diseño Electrónico</h3>
+                    <h3 id="skills2Title">Diseño Electrónico</h3>
                     <ul>
-                        <li>Diseño de circuitos electrónicos</li>
-                        <li>Diseño de PCB (Altium, KiCad, EasyEda)</li>
-                        <li>Electrónica de potencia</li>
-                        <li>Fuentes conmutadas</li>
+                        <li id="skills2Item1">Diseño de circuitos electrónicos</li>
+                        <li id="skills2Item2">Diseño de PCB (Altium, KiCad, EasyEda)</li>
+                        <li id="skills2Item3">Electrónica de potencia</li>
+                        <li id="skills2Item4">Fuentes conmutadas</li>
                     </ul>
                 </div>
                 
                 <div class="skill-category">
-                    <h3>Diseño Mecánico</h3>
+                    <h3 id="skills3Title">Diseño Mecánico</h3>
                     <ul>
-                        <li>CAD (SolidWorks, FreeCad, AutoCAD)</li>
-                        <li>CAM</li>
-                        <li>FlatCam</li>
-                        <li>GcodeSender</li>
-                        <li>Repetier</li>
+                        <li id="skills3Item1">CAD (SolidWorks, FreeCad, AutoCAD)</li>
+                        <li id="skills3Item2">CAM</li>
+                        <li id="skills3Item3">FlatCam</li>
+                        <li id="skills3Item4">GcodeSender</li>
+                        <li id="skills3Item5">Repetier</li>
                     </ul>
                 </div>
                 
                 <div class="skill-category">
-                    <h3>Pruebas y Calibración</h3>
+                    <h3 id="skills4Title">Pruebas y Calibración</h3>
                     <ul>
-                        <li>Prueba y calibración de equipos</li>
-                        <li>Medición de parámetros eléctricos</li>
-                        <li>Termografía</li>
+                        <li id="skills4Item1">Prueba y calibración de equipos</li>
+                        <li id="skills4Item2">Medición de parámetros eléctricos</li>
+                        <li id="skills4Item3">Termografía</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <section id="languages">
-            <h2>Idiomas</h2>
+            <h2 id="languagesTitle">Idiomas</h2>
             <ul>
-                <li>Español - Nativo</li>
-                <li>Inglés - Competente</li>
-                <li>Italiano - Competente</li>
+                <li id="lang1">Español - Nativo</li>
+                <li id="lang2">Inglés - Competente</li>
+                <li id="lang3">Italiano - Competente</li>
             </ul>
         </section>
 
         <section id="contact">
-            <h2>Contacto</h2>
+            <h2 id="contactTitle">Contacto</h2>
             <div class="contact-info">
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span>San Lorenzo 1060, 11°A, San Miguel de Tucumán</span>
+                    <span id="address">San Lorenzo 1060, 11°A, San Miguel de Tucumán</span>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
-                    <span>+54 9 3816279735</span>
+                    <span id="phone">+54 9 3816279735</span>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
-                    <span>caglierogonzalo@hotmail.com</span>
+                    <span id="email">caglierogonzalo@hotmail.com</span>
                 </div>
             </div>
         </section>
@@ -531,11 +576,253 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Gonzalo Matías Cagliero. Todos los derechos reservados.</p>
+            <p id="footerText">&copy; 2024 Gonzalo Matías Cagliero. Todos los derechos reservados.</p>
         </div>
     </footer>
 
     <script>
+        // Textos en diferentes idiomas
+        const translations = {
+            es: {
+                title: "Gonzalo Matías Cagliero",
+                subtitle: "Ingeniero Electrónico | Diseñador de Hardware",
+                aboutTitle: "Sobre Mí",
+                aboutText1: "Soy una persona feliz, con un excelente carácter. A lo largo de estos años he aprendido a valorar cada una de las oportunidades que me da la vida, esforzándome al máximo para poder crecer personal y profesionalmente. Me gusta aprender cosas nuevas, conocer nuevas personas y trabajar en equipo. Considero que los buenos modales, la veracidad y la puntualidad son valores fundamentales.",
+                aboutText2: "En mis tiempos libres me gusta leer, tocar la guitarra y jugar al ajedrez. Me gustan los nuevos desafíos y pienso que con esfuerzo y constancia cualquier dificultad se puede superar.",
+                experienceTitle: "Experiencia Profesional",
+                job1Title: "Diseñador de Hardware",
+                job1Desc: "Seleo Srl es una empresa italiana dedicada al diseño y producción de instrumentos para el diagnóstico clínico y veterinario.",
+                job1Task1: "Diseño electrónico",
+                job1Task2: "Diseño mecánico",
+                job1Task3: "Programación de firmware",
+                job2Title: "Ingeniero electrónico",
+                job2Desc: "Empresa dedicada al mantenimiento y servicio técnico electrónico, reparaciones, asesoramiento y desarrollo de interfaces electrónicas en general.",
+                job2Task1: "Trato con el cliente y proveedores",
+                job2Task2: "Mantenimiento, desarrollo y reparaciones",
+                job2Task3: "Asesoramiento",
+                job3Title: "Ingeniero electrónico",
+                job3Desc: "Empresa tecnológica que desarrolla instrumentos electrónicos para el sector ganadero.",
+                job3Task1: "Diseño del circuito electrónico",
+                job3Task2: "Diseño de PCB",
+                job3Task3: "Diseño mecánico",
+                job4Title: "Ingeniero electrónico",
+                job4Desc: "Empresa dedicada al desarrollo de prototipos electrónicos.",
+                job4Task1: "Documentación de firmware",
+                job4Task2: "Compra de insumos",
+                job4Task3: "Test y calibración de prototipos",
+                job5Title: "Operador de instrumentos de medición",
+                job5Desc: "Empresa representante oficial de Fluke en Tucumán, dedicada a la venta de equipos, servicios de certificaciones, reparaciones y calibración de equipos.",
+                job5Task1: "Medición de parámetros eléctricos",
+                job5Task2: "Medición de puesta a tierra",
+                job5Task3: "Termografía",
+                educationTitle: "Educación",
+                degree1Title: "Ingeniería Electrónica",
+                academicTitle: "Ámbito Académico",
+                academic1Title: "Beca de servicio",
+                academic1Desc: "Laboratorio de comunicación y control. (Estudiante)",
+                academic2Title: "Beca Binid - Investigación",
+                academic2Desc: "Experiencia en investigación y desarrollo dentro del ámbito universitario. (Graduado)",
+                academic3Title: "Título de Ingeniero Electrónico",
+                academic3Desc: "Título profesional obtenido tras completar los estudios de ingeniería electrónica.",
+                skillsTitle: "Aptitudes y Conocimientos",
+                skills1Title: "Programación",
+                skills1Item1: "C",
+                skills1Item2: "HTML, CSS, JavaScript",
+                skills1Item3: "SQL",
+                skills1Item4: "Programación de firmware",
+                skills2Title: "Diseño Electrónico",
+                skills2Item1: "Diseño de circuitos electrónicos",
+                skills2Item2: "Diseño de PCB (Altium, KiCad, EasyEda)",
+                skills2Item3: "Electrónica de potencia",
+                skills2Item4: "Fuentes conmutadas",
+                skills3Title: "Diseño Mecánico",
+                skills3Item1: "CAD (SolidWorks, FreeCad, AutoCAD)",
+                skills3Item2: "CAM",
+                skills3Item3: "FlatCam",
+                skills3Item4: "GcodeSender",
+                skills3Item5: "Repetier",
+                skills4Title: "Pruebas y Calibración",
+                skills4Item1: "Prueba y calibración de equipos",
+                skills4Item2: "Medición de parámetros eléctricos",
+                skills4Item3: "Termografía",
+                languagesTitle: "Idiomas",
+                lang1: "Español - Nativo",
+                lang2: "Inglés - Competente",
+                lang3: "Italiano - Competente",
+                contactTitle: "Contacto",
+                address: "San Lorenzo 1060, 11°A, San Miguel de Tucumán",
+                phone: "+54 9 3816279735",
+                email: "caglierogonzalo@hotmail.com",
+                footerText: "© 2024 Gonzalo Matías Cagliero. Todos los derechos reservados."
+            },
+            en: {
+                title: "Gonzalo Matías Cagliero",
+                subtitle: "Electronic Engineer | Hardware Designer",
+                aboutTitle: "About Me",
+                aboutText1: "I am a happy person with an excellent character. Over the years, I have learned to value every opportunity life gives me, striving to grow personally and professionally. I enjoy learning new things, meeting new people, and working in a team. I consider good manners, truthfulness, and punctuality to be fundamental values.",
+                aboutText2: "In my free time, I like to read, play guitar, and play chess. I enjoy new challenges and believe that with effort and perseverance, any difficulty can be overcome.",
+                experienceTitle: "Professional Experience",
+                job1Title: "Hardware Designer",
+                job1Desc: "Seleo Srl is an Italian company dedicated to the design and production of instruments for clinical and veterinary diagnostics.",
+                job1Task1: "Electronic design",
+                job1Task2: "Mechanical design",
+                job1Task3: "Firmware programming",
+                job2Title: "Electronic Engineer",
+                job2Desc: "Company dedicated to electronic maintenance and technical service, repairs, consulting, and development of electronic interfaces in general.",
+                job2Task1: "Customer and supplier relations",
+                job2Task2: "Maintenance, development, and repairs",
+                job2Task3: "Consulting",
+                job3Title: "Electronic Engineer",
+                job3Desc: "Technology company that develops electronic instruments for the livestock sector.",
+                job3Task1: "Electronic circuit design",
+                job3Task2: "PCB design",
+                job3Task3: "Mechanical design",
+                job4Title: "Electronic Engineer",
+                job4Desc: "Company dedicated to the development of electronic prototypes.",
+                job4Task1: "Firmware documentation",
+                job4Task2: "Supply purchasing",
+                job4Task3: "Prototype testing and calibration",
+                job5Title: "Measurement Instruments Operator",
+                job5Desc: "Official Fluke representative in Tucumán, dedicated to equipment sales, certification services, repairs, and equipment calibration.",
+                job5Task1: "Measurement of electrical parameters",
+                job5Task2: "Grounding measurement",
+                job5Task3: "Thermography",
+                educationTitle: "Education",
+                degree1Title: "Electronic Engineering",
+                academicTitle: "Academic Background",
+                academic1Title: "Service Scholarship",
+                academic1Desc: "Communication and control laboratory. (Student)",
+                academic2Title: "Binid Scholarship - Research",
+                academic2Desc: "Experience in research and development within the university environment. (Graduate)",
+                academic3Title: "Electronic Engineering Degree",
+                academic3Desc: "Professional degree obtained after completing electronic engineering studies.",
+                skillsTitle: "Skills and Knowledge",
+                skills1Title: "Programming",
+                skills1Item1: "C",
+                skills1Item2: "HTML, CSS, JavaScript",
+                skills1Item3: "SQL",
+                skills1Item4: "Firmware programming",
+                skills2Title: "Electronic Design",
+                skills2Item1: "Electronic circuit design",
+                skills2Item2: "PCB design (Altium, KiCad, EasyEda)",
+                skills2Item3: "Power electronics",
+                skills2Item4: "Switched-mode power supplies",
+                skills3Title: "Mechanical Design",
+                skills3Item1: "CAD (SolidWorks, FreeCad, AutoCAD)",
+                skills3Item2: "CAM",
+                skills3Item3: "FlatCam",
+                skills3Item4: "GcodeSender",
+                skills3Item5: "Repetier",
+                skills4Title: "Testing and Calibration",
+                skills4Item1: "Equipment testing and calibration",
+                skills4Item2: "Measurement of electrical parameters",
+                skills4Item3: "Thermography",
+                languagesTitle: "Languages",
+                lang1: "Spanish - Native",
+                lang2: "English - Proficient",
+                lang3: "Italian - Proficient",
+                contactTitle: "Contact",
+                address: "San Lorenzo 1060, 11°A, San Miguel de Tucumán",
+                phone: "+54 9 3816279735",
+                email: "caglierogonzalo@hotmail.com",
+                footerText: "© 2024 Gonzalo Matías Cagliero. All rights reserved."
+            },
+            it: {
+                title: "Gonzalo Matías Cagliero",
+                subtitle: "Ingegnere Elettronico | Progettista Hardware",
+                aboutTitle: "Su di Me",
+                aboutText1: "Sono una persona felice, con un carattere eccellente. Nel corso di questi anni ho imparato a valorizzare ogni opportunità che la vita mi offre, impegnandomi al massimo per crescere personalmente e professionalmente. Mi piace imparare cose nuove, conoscere nuove persone e lavorare in team. Considero le buone maniere, la veridicità e la puntualità valori fondamentali.",
+                aboutText2: "Nel mio tempo libero mi piace leggere, suonare la chitarra e giocare a scacchi. Mi piacciono le nuove sfide e penso che con impegno e costanza qualsiasi difficoltà possa essere superata.",
+                experienceTitle: "Esperienza Professionale",
+                job1Title: "Progettista Hardware",
+                job1Desc: "Seleo Srl è un'azienda italiana dedicata alla progettazione e produzione di strumenti per la diagnostica clinica e veterinaria.",
+                job1Task1: "Progettazione elettronica",
+                job1Task2: "Progettazione meccanica",
+                job1Task3: "Programmazione firmware",
+                job2Title: "Ingegnere Elettronico",
+                job2Desc: "Azienda dedicata alla manutenzione e servizio tecnico elettronico, riparazioni, consulenza e sviluppo di interfacce elettroniche in generale.",
+                job2Task1: "Rapporti con clienti e fornitori",
+                job2Task2: "Manutenzione, sviluppo e riparazioni",
+                job2Task3: "Consulenza",
+                job3Title: "Ingegnere Elettronico",
+                job3Desc: "Azienda tecnologica che sviluppa strumenti elettronici per il settore zootecnico.",
+                job3Task1: "Progettazione circuiti elettronici",
+                job3Task2: "Progettazione PCB",
+                job3Task3: "Progettazione meccanica",
+                job4Title: "Ingegnere Elettronico",
+                job4Desc: "Azienda dedicata allo sviluppo di prototipi elettronici.",
+                job4Task1: "Documentazione firmware",
+                job4Task2: "Acquisto forniture",
+                job4Task3: "Test e calibrazione prototipi",
+                job5Title: "Operatore Strumenti di Misura",
+                job5Desc: "Rappresentante ufficiale Fluke a Tucumán, dedicata alla vendita di apparecchiature, servizi di certificazione, riparazioni e calibrazione di apparecchiature.",
+                job5Task1: "Misurazione parametri elettrici",
+                job5Task2: "Misurazione messa a terra",
+                job5Task3: "Termografia",
+                educationTitle: "Istruzione",
+                degree1Title: "Ingegneria Elettronica",
+                academicTitle: "Ambito Accademico",
+                academic1Title: "Borsa di Servizio",
+                academic1Desc: "Laboratorio di comunicazione e controllo. (Studente)",
+                academic2Title: "Borsa Binid - Ricerca",
+                academic2Desc: "Esperienza in ricerca e sviluppo nell'ambito universitario. (Laureato)",
+                academic3Title: "Laurea in Ingegneria Elettronica",
+                academic3Desc: "Titolo professionale ottenuto dopo aver completato gli studi di ingegneria elettronica.",
+                skillsTitle: "Competenze e Conoscenze",
+                skills1Title: "Programmazione",
+                skills1Item1: "C",
+                skills1Item2: "HTML, CSS, JavaScript",
+                skills1Item3: "SQL",
+                skills1Item4: "Programmazione firmware",
+                skills2Title: "Progettazione Elettronica",
+                skills2Item1: "Progettazione circuiti elettronici",
+                skills2Item2: "Progettazione PCB (Altium, KiCad, EasyEda)",
+                skills2Item3: "Elettronica di potenza",
+                skills2Item4: "Alimentatori switching",
+                skills3Title: "Progettazione Meccanica",
+                skills3Item1: "CAD (SolidWorks, FreeCad, AutoCAD)",
+                skills3Item2: "CAM",
+                skills3Item3: "FlatCam",
+                skills3Item4: "GcodeSender",
+                skills3Item5: "Repetier",
+                skills4Title: "Test e Calibrazione",
+                skills4Item1: "Test e calibrazione apparecchiature",
+                skills4Item2: "Misurazione parametri elettrici",
+                skills4Item3: "Termografia",
+                languagesTitle: "Lingue",
+                lang1: "Spagnolo - Madrelingua",
+                lang2: "Inglese - Competente",
+                lang3: "Italiano - Competente",
+                contactTitle: "Contatto",
+                address: "San Lorenzo 1060, 11°A, San Miguel de Tucumán",
+                phone: "+54 9 3816279735",
+                email: "caglierogonzalo@hotmail.com",
+                footerText: "© 2024 Gonzalo Matías Cagliero. Tutti i diritti riservati."
+            }
+        };
+
+        // Función para cambiar el idioma
+        function changeLanguage(lang) {
+            document.documentElement.lang = lang;
+            const elements = translations[lang];
+            
+            for (const key in elements) {
+                const element = document.getElementById(key);
+                if (element) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.value = elements[key];
+                    } else {
+                        element.textContent = elements[key];
+                    }
+                }
+            }
+        }
+
+        // Event listeners para los botones de idioma
+        document.getElementById('es-btn').addEventListener('click', () => changeLanguage('es'));
+        document.getElementById('en-btn').addEventListener('click', () => changeLanguage('en'));
+        document.getElementById('it-btn').addEventListener('click', () => changeLanguage('it'));
+
         // Animación de aparición de secciones al hacer scroll
         document.addEventListener('DOMContentLoaded', function() {
             const sections = document.querySelectorAll('section');
